@@ -5,6 +5,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // 🔐 Login
   const handleLogin = async () => {
     try {
       const res = await API.post("/auth/login", {
@@ -16,6 +17,20 @@ function Login() {
       window.location.href = "/";
     } catch (err) {
       alert("Login Failed");
+    }
+  };
+
+  // 🆕 Signup
+  const handleSignup = async () => {
+    try {
+      await API.post("/auth/signup", {
+        name: "chaithanya",
+        email: "chaithanya@gmail.com",
+        password: "123456"
+      });
+      alert("Signup successful! Now login");
+    } catch (err) {
+      alert("Signup failed");
     }
   };
 
@@ -39,6 +54,12 @@ function Login() {
       <br /><br />
 
       <button onClick={handleLogin}>Login</button>
+
+      <br /><br />
+
+      <button onClick={handleSignup}>
+        Signup
+      </button>
     </div>
   );
 }
