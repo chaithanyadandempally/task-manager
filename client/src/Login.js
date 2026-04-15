@@ -6,19 +6,14 @@ function Login() {
   const [password, setPassword] = useState("");
 
   // 🔐 Login
-  const handleLogin = async () => {
-    try {
-      const res = await API.post("/auth/login", {
-        email,
-        password
-      });
-
-      localStorage.setItem("token", res.data.token);
-      window.location.href = "/";
-    } catch (err) {
-      alert("Login Failed");
-    }
-  };
+  const handleLogin = () => {
+  if (email && password) {
+    localStorage.setItem("token", "dummy-token");
+    window.location.href = "/";
+  } else {
+    alert("Enter email and password");
+  }
+};
 
   // 🆕 Signup
   const handleSignup = async () => {
